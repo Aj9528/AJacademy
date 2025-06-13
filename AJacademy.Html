@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJ Academy - Mind Training & Psychology Courses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c63ff;
+            --secondary: #4a42e8;
+            --dark: #1a1a2e;
+            --light: #f1f1f1;
+            --accent: #ff6b6b;
+            --success: #4caf50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #f3f4f6, #e5e6e8, #f3f4f6);
+            background-size: 300% 300%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            animation: slideDown 0.5s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 10rem 5% 5rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.1) 0%, rgba(255, 255, 255, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(108, 99, 255, 0.05) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            animation: fadeIn 1s ease-out 0.2s both;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+        
+        .cta-button:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+        }
+        
+        .cta-button.secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .cta-button.secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 5%;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Courses Section */
+        .courses {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
+        }
+        
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .course-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .course-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .course-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+        }
+        
+        .course-content {
+            padding: 1.5rem;
+        }
+        
+        .course-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .course-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+        
+        .course-details {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .enroll-button {
+            display: block;
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            padding: 0.7rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .enroll-button:hover {
+            background: var(--secondary);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 5%;
+            background: white;
+        }
+        
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-slider {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial-card {
+            min-width: 100%;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        
+        .testimonial-content {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-content::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 4rem;
+            color: rgba(108, 99, 255, 0.1);
+            font-family: serif;
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+        
+        .author-info p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            background: #ddd;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+        
+        /* Registration Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal {
+            background: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #777;
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+        
+        .modal h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            text-align: center;
+        }
+        
+        .course-selected {
+            background: rgba(108, 99, 255, 0.1);
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .course-selected h3 {
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+        
+        .course-selected .price {
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 0.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background: var(--secondary);
+        }
+        
+        /* Success Modal */
+        .success-modal {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: var(--success);
+            margin-bottom: 1.5rem;
+            animation: bounce 1s ease;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+        
+        .success-modal h2 {
+            color: var(--success);
+            margin-bottom: 1rem;
+        }
+        
+        .success-modal p {
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--primary);
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-col p {
+            color: #bbb;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 1rem;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #bbb;
+        }
+        
+        .contact-info i {
+            margin-right: 1rem;
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+        
+        .badge {
+            background: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .badge i {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-right: 0.8rem;
+        }
+        
+        .badge-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out both;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 8rem 5% 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-button {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .course-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <span>AJ Academy</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+    
+    <section class="hero" id="home">
+        <h1>Unlock Your <span class="highlight">Mind's</span> Full Potential</h1>
+        <p class="fade-in delay-1">Transform your life with our powerful mind training programs. Learn the secrets of psychology, attraction, and spiritual awakening from experts.</p>
+        <div class="fade-in delay-2">
+            <a href="#courses" class="cta-button">Explore Courses</a>
+            <a href="#features" class="cta-button secondary">Learn More</a>
+        </div>
+    </section>
+    
+    <section class="features" id="features">
+        <h2 class="section-title">Why Choose AJ Academy?</h2>
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Expert Instructors</h3>
+                <p>Learn from industry-leading experts with years of practical experience in psychology and human behavior.</p>
+            </div>
+            <div class="feature-card fade-in delay-1">
+                <div class="feature-icon">
+                    <i class="fas fa-laptop"></i>
+                </div>
+                <h3>Live Classes</h3>
+                <p>Interactive live sessions with Q&A opportunities to get your questions answered in real-time.</p>
+            </div>
+            <div class="feature-card fade-in delay-2">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>24/7 Support</h3>
+                <p>Round-the-clock doubt resolution and support to ensure you never get stuck in your learning journey.</p>
+            </div>
+        </div>
+        
+        <div class="trust-badges fade-in delay-3">
+            <div class="badge">
+                <i class="fas fa-shield-alt"></i>
+                <span class="badge-text">100% Secure Payments</span>
+            </div>
+            <div class="badge">
+                <i class="fas fa-check-circle"></i>
+                <span class="badge-text">Trusted by 10,000+ Students</span>
+            </div>
+            <div class="badge">
+                <i class="fas fa-lock"></i>
+                <span class="badge-text">Privacy Guaranteed</span>
+            </div>
+        </div>
+    </section>
+    
+    <section class="courses" id="courses">
+        <h2 class="section-title">Our Premium Courses</h2>
+        <div class="courses-container">
+            <div class="course-card fade-in">
+                <div class="course-badge">Bestseller</div>
+                <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1494172961521-33799ddd43a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="course-content">
+                    <h3>Mind Training Mastery</h3>
+                    <div class="course-price">₹499</div>
+                    <p class="course-details">Unlock the hidden potential of your mind with scientifically proven techniques to enhance focus, memory, and cognitive abilities.</p>
+                    <a href="#" class="enroll-button" data-course="Mind Training Mastery" data-price="499">Enroll Now</a>
+                </div>
+            </div>
+            
+            <div class="course-card fade-in delay-1">
+                <div class="course-badge">Popular</div>
+                <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="course-content">
+                    <h3>Master the Psychology of Human Attraction & Influence</h3>
+                    <div class="course-price">₹999</div>
+                    <p class="course-details">Learn the psychological principles behind attraction and influence to build better relationships and professional networks.</p>
+                    <a href="#" class="enroll-button" data-course="Master the Psychology of Human Attraction & Influence" data-price="999">Enroll Now</a>
+                </div>
+            </div>
+            
+            <div class="course-card fade-in delay-2">
+                <div class="course-badge">Advanced</div>
+                <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="course-content">
+                    <h3>Decode the Female Mind: Psychology & Behavior Patterns</h3>
+                    <div class="course-price">₹1,499</div>
+                    <p class="course-details">Understand the complexities of female psychology and behavior patterns to improve your interpersonal relationships.</p>
+                    <a href="#" class="enroll-button" data-course="Decode the Female Mind: Psychology & Behavior Patterns" data-price="1499">Enroll Now</a>
+                </div>
+            </div>
+            
+            <div class="course-card fade-in delay-3">
+                <div class="course-badge">Premium</div>
+                <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="course-content">
+                    <h3>Spiritual Guidance & Path Awakening</h3>
+                    <div class="course-price">₹1,999</div>
+                    <p class="course-details">Embark on a transformative spiritual journey to discover your true purpose and achieve inner peace and enlightenment.</p>
+                    <a href="#" class="enroll-button" data-course="Spiritual Guidance & Path Awakening" data-price="1999">Enroll Now</a>
+                </div>
+            </div>
+            
+            <div class="course-card fade-in">
+                <div class="course-badge">Ultimate</div>
+                <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="course-content">
+                    <h3>All-in-One Complete Package</h3>
+                    <div class="course-price">₹3,999</div>
+                    <p class="course-details">Get access to all our courses with live classes, 24/7 doubt resolution, and exclusive bonus materials.</p>
+                    <a href="#" class="enroll-button" data-course="All-in-One Complete Package" data-price="3999">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonials" id="testimonials">
+        <h2 class="section-title">What Our Students Say</h2>
+        <div class="testimonials-container">
+            <div class="testimonial-slider">
+                <div class="testimonial-track">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">AJ Academy completely transformed my understanding of human psychology. The Mind Training course helped me improve my focus and memory significantly. I've seen remarkable improvements in both my personal and professional life.</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">RK</div>
+                                <div class="author-info">
+                                    <h4>Rahul Kumar</h4>
+                                    <p>Mind Training Student</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">The Psychology of Attraction course was a game-changer for me. I've always struggled with social situations, but after applying the techniques I learned, I've built stronger relationships and even got promoted at work!</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">PS</div>
+                                <div class="author-info">
+                                    <h4>Priya Sharma</h4>
+                                    <p>Attraction Course Student</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">The Spiritual Guidance program helped me find my true purpose in life. I was lost and confused before joining, but now I have clarity and inner peace that I never thought possible. Worth every rupee!</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">AM</div>
+                                <div class="author-info">
+                                    <h4>Anil Mehta</h4>
+                                    <p>Spiritual Guidance Student</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-nav">
+                <div class="slider-dot active"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+            </div>
+        </div>
+    </section>
+    
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>About AJ Academy</h3>
+                <p>We are dedicated to helping individuals unlock their full potential through mind training, psychology, and spiritual awakening programs.</p>
+                <div class="social-links">
+                    <a href="https://wa.me/7453845660" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://youtube.com/@ajacademy963?si=bymI9F-CtrTNrf5Y" class="social-link" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://t.me/Ajacademy963g" class="social-link" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <a href="https://www.instagram.com/aj_academy963?igsh=dGVzNDd0eXY3Mnli" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-phone-alt"></i> +91 7453845660</li>
+                    <li><i class="fas fa-envelope"></i> ajacademy963@gmail.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Uttarpradesh , Bareilly , India</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; AJ Academy. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Registration Modal -->
+    <div class="modal-overlay" id="registrationModal">
+        <div class="modal">
+            <span class="close-modal">&times;</span>
+            <h2>Course Registration</h2>
+            <div class="course-selected">
+                <h3 id="selectedCourse">Mind Training Mastery</h3>
+                <div class="price">₹<span id="coursePrice">499</span></div>
+            </div>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="whatsapp">WhatsApp Number</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" required>
+                </div>
+                <div class="form-group">
+                    <label for="education">Highest Education</label>
+                    <select id="education" name="education" required>
+                        <option value="">Select your education</option>
+                        <option value="High School">High School</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="Bachelor's Degree">Bachelor's Degree</option>
+                        <option value="Master's Degree">Master's Degree</option>
+                        <option value="PhD">PhD</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="emergency">Emergency Contact Number</label>
+                    <input type="tel" id="emergency" name="emergency" required>
+                </div>
+                <button type="submit" class="submit-btn">Complete Registration</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal success-modal">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Registration Successful!</h2>
+            <p>Thank you for registering. We've sent the course details to your WhatsApp number. Our team will contact you shortly.</p>
+            <button class="submit-btn" id="closeSuccess">Continue to Website</button>
+        </div>
+    </div>
+    
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Smooth Scrolling for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Testimonial Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-card');
+        const dots = document.querySelectorAll('.slider-dot');
+        
+        function showSlide(n) {
+            slides.forEach(slide => {
+                slide.style.display = 'none';
+            });
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].style.display = 'block';
+            dots[currentSlide].classList.add('active');
+        }
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+        
+        // Auto slide change
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+        
+        // Initialize slider
+        showSlide(0);
+        
+        // Registration Modal
+        const enrollButtons = document.querySelectorAll('.enroll-button');
+        const registrationModal = document.getElementById('registrationModal');
+        const successModal = document.getElementById('successModal');
+        const closeModalButtons = document.querySelectorAll('.close-modal, #closeSuccess');
+        const selectedCourse = document.getElementById('selectedCourse');
+        const coursePrice = document.getElementById('coursePrice');
+        
+        enrollButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                selectedCourse.textContent = this.getAttribute('data-course');
+                coursePrice.textContent = this.getAttribute('data-price');
+                registrationModal.classList.add('active');
+            });
+        });
+        
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                registrationModal.classList.remove('active');
+                successModal.classList.remove('active');
+            });
+        });
+        
+        // Form Submission
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+            const education = document.getElementById('education').value;
+            const emergency = document.getElementById('emergency').value;
+            const course = selectedCourse.textContent;
+            const price = coursePrice.textContent;
+            
+            // Create WhatsApp message
+            const message = `New Course Registration:\n\nName: ${name}\nWhatsApp: ${whatsapp}\nEducation: ${education}\nEmergency Contact: ${emergency}\nCourse: ${course}\nPrice: ₹${price}`;
+            
+            // Encode message for WhatsApp URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Send data to WhatsApp (your number)
+            window.open(`https://wa.me/7453845660?text=${encodedMessage}`, '_blank');
+            
+            // Show success modal
+            registrationModal.classList.remove('active');
+            successModal.classList.add('active');
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        function checkScroll() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+    </script>
+</body>
+</html>
